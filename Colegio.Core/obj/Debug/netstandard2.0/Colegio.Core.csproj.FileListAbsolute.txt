@@ -1,0 +1,9 @@
+D:\Personal\Proyectos\Colegio\Colegio.Core\bin\Debug\netstandard2.0\Colegio.Core.deps.json
+D:\Personal\Proyectos\Colegio\Colegio.Core\bin\Debug\netstandard2.0\Colegio.Core.dll
+D:\Personal\Proyectos\Colegio\Colegio.Core\bin\Debug\netstandard2.0\Colegio.Core.pdb
+D:\Personal\Proyectos\Colegio\Colegio.Core\obj\Debug\netstandard2.0\Colegio.Core.csprojAssemblyReference.cache
+D:\Personal\Proyectos\Colegio\Colegio.Core\obj\Debug\netstandard2.0\Colegio.Core.AssemblyInfoInputs.cache
+D:\Personal\Proyectos\Colegio\Colegio.Core\obj\Debug\netstandard2.0\Colegio.Core.AssemblyInfo.cs
+D:\Personal\Proyectos\Colegio\Colegio.Core\obj\Debug\netstandard2.0\Colegio.Core.csproj.CoreCompileInputs.cache
+D:\Personal\Proyectos\Colegio\Colegio.Core\obj\Debug\netstandard2.0\Colegio.Core.dll
+D:\Personal\Proyectos\Colegio\Colegio.Core\obj\Debug\netstandard2.0\Colegio.Core.pdb

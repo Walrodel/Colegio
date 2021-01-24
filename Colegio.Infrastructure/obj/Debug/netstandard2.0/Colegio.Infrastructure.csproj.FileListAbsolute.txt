@@ -1,0 +1,12 @@
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\bin\Debug\netstandard2.0\Colegio.Infrastructure.deps.json
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\bin\Debug\netstandard2.0\Colegio.Infrastructure.dll
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\bin\Debug\netstandard2.0\Colegio.Infrastructure.pdb
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\bin\Debug\netstandard2.0\Colegio.Core.dll
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\bin\Debug\netstandard2.0\Colegio.Core.pdb
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.csprojAssemblyReference.cache
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.AssemblyInfoInputs.cache
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.AssemblyInfo.cs
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.csproj.CopyComplete
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.dll
+D:\Personal\Proyectos\Colegio\Colegio.Infrastructure\obj\Debug\netstandard2.0\Colegio.Infrastructure.pdb
