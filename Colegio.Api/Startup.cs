@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace Colegio.Api
 {
@@ -28,6 +29,8 @@ namespace Colegio.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddControllers(options => {
@@ -39,7 +42,7 @@ namespace Colegio.Api
                 });
 
             services.AddDbContext<ColegioContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Colegio"))
+                options.UseSqlServer(Configuration.GetConnectionString("Colegio"), x=> x.MigrationsAssembly("Colegio.Infrastructure"))
             );
 
             services.AddTransient<IIngresoService, IngresoService>();
@@ -56,6 +59,7 @@ namespace Colegio.Api
             });
 
             AddSwagger(services);
+
         }
 
         private void AddSwagger(IServiceCollection services)
