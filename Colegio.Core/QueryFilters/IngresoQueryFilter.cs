@@ -10,5 +10,8 @@ namespace Colegio.Core.QueryFilters
         public string Apellido { get; set; }
         public string Edad { get; set; }
         public string Casa { get; set; }
+        public int PageSize { get; set; }
+        public int PageNumber { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Colegio.Core.Entities;
+﻿using Colegio.Core.CustomEntities;
+using Colegio.Core.Entities;
 using Colegio.Core.Exceptions;
 using Colegio.Core.Interfaces;
 using Colegio.Core.QueryFilters;
@@ -19,7 +20,7 @@ namespace Colegio.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Ingreso> GetIngresos(IngresoQueryFilter filters)
+        public PageList<Ingreso> GetIngresos(IngresoQueryFilter filters)
         {
             var ingresos = _unitOfWork.IngresoRepository.GetAll();
             if (filters.Nombre != null)
@@ -42,7 +43,9 @@ namespace Colegio.Core.Services
                 ingresos = ingresos.Where(x => x.Casa == filters.Casa);
             }
 
-            return ingresos;
+            var pageIngesos = PageList<Ingreso>.Create(ingresos, filters.PageNumber, filters.PageSize);
+
+            return pageIngesos;
         }
 
         public async Task<Ingreso> GetIngreso(int Id)

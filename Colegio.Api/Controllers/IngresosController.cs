@@ -6,6 +6,7 @@ using Colegio.Core.Interfaces;
 using Colegio.Core.QueryFilters;
 using Colegio.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
@@ -34,6 +35,17 @@ namespace Colegio.Api.Controllers
             var ingresos = _ingresoService.GetIngresos(filters);
             var ingresosDto = _mapper.Map<IEnumerable<IngresoDto>>(ingresos);
             var respose = new ApiResponse<IEnumerable<IngresoDto>>(ingresosDto);
+            var matadata = new
+            {
+                ingresos.TotalCount,
+                ingresos.PageSize,
+                ingresos.CurrentPage,
+                ingresos.TotlaPages,
+                ingresos.HasNextPage,
+                ingresos.HasPreviousPage
+
+            };
+            Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(matadata));
             return Ok(respose);
         }
 
