@@ -3,10 +3,12 @@ using Colegio.Api.Responses;
 using Colegio.Core.DTOs;
 using Colegio.Core.Entities;
 using Colegio.Core.Interfaces;
+using Colegio.Core.QueryFilters;
 using Colegio.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Colegio.Api.Controllers
@@ -25,9 +27,11 @@ namespace Colegio.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetIngresos()
+        [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(ApiResponse<IEnumerable<IngresoDto>>))]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest, Type = typeof(ApiResponse<IEnumerable<IngresoDto>>))]
+        public IActionResult GetIngresos([FromQuery] IngresoQueryFilter filters)
         {
-            var ingresos = _ingresoService.GetIngresos();
+            var ingresos = _ingresoService.GetIngresos(filters);
             var ingresosDto = _mapper.Map<IEnumerable<IngresoDto>>(ingresos);
             var respose = new ApiResponse<IEnumerable<IngresoDto>>(ingresosDto);
             return Ok(respose);

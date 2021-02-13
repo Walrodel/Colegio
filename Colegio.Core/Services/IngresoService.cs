@@ -1,8 +1,10 @@
 ﻿using Colegio.Core.Entities;
 using Colegio.Core.Exceptions;
 using Colegio.Core.Interfaces;
+using Colegio.Core.QueryFilters;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -17,9 +19,30 @@ namespace Colegio.Core.Services
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Ingreso> GetIngresos()
+        public IEnumerable<Ingreso> GetIngresos(IngresoQueryFilter filters)
         {
-            return _unitOfWork.IngresoRepository.GetAll();
+            var ingresos = _unitOfWork.IngresoRepository.GetAll();
+            if (filters.Nombre != null)
+            {
+                ingresos = ingresos.Where(x => x.Nombre.ToLower().Contains(filters.Nombre.ToLower()));
+            }
+
+            if (filters.Apellido != null)
+            {
+                ingresos = ingresos.Where(x => x.Apellido.ToLower().Contains(filters.Apellido.ToLower()));
+            }
+
+            if (filters.Edad != null)
+            {
+                ingresos = ingresos.Where(x => x.Edad == filters.Edad);
+            }
+
+            if (filters.Casa != null)
+            {
+                ingresos = ingresos.Where(x => x.Casa == filters.Casa);
+            }
+
+            return ingresos;
         }
 
         public async Task<Ingreso> GetIngreso(int Id)
