@@ -4,16 +4,16 @@ using Colegio.Core.DTOs;
 using Colegio.Core.Entities;
 using Colegio.Core.Interfaces;
 using Colegio.Core.QueryFilters;
-using Colegio.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace Colegio.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IngresosController : ControllerBase

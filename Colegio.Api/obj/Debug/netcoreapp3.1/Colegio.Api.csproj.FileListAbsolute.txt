@@ -76,3 +76,4 @@ D:\Personal\Proyectos\Colegio\Colegio.Api\bin\Debug\netcoreapp3.1\Microsoft.Open
 D:\Personal\Proyectos\Colegio\Colegio.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 D:\Personal\Proyectos\Colegio\Colegio.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\Personal\Proyectos\Colegio\Colegio.Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Personal\Proyectos\Colegio\Colegio.Api\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
