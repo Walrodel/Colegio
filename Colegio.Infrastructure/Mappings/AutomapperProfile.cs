@@ -8,8 +8,9 @@ namespace Colegio.Infrastructure.Mappings
     {
         public AutomapperProfile()
         {
-            CreateMap<Ingreso, IngresoDto>();
-            CreateMap<IngresoDto, Ingreso>();
+            CreateMap<Ingreso, IngresoDto>().ReverseMap();
+
+            CreateMap<Seguridad, SeguridadDto>().ReverseMap();
         }
     }
 }

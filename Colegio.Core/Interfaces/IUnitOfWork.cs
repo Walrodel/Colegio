@@ -4,9 +4,10 @@ using System.Threading.Tasks;
 
 namespace Colegio.Core.Interfaces
 {
-    public interface IUnitOfWork: IDisposable
+    public interface IUnitOfWork : IDisposable
     {
-        IRepository<Ingreso> IngresoRepository { get;  }
+        IRepository<Ingreso> IngresoRepository { get; }
+        ISeguridadRepository SeguridadRepository { get; }
 
         void SaveChanges();
         Task SaveChangesAsyn();

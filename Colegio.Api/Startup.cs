@@ -50,6 +50,8 @@ namespace Colegio.Api
 
             services.AddTransient<IIngresoService, IngresoService>();
 
+            services.AddTransient<ISeguridadService, SeguridadService>();
+
             services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -1,7 +1,6 @@
 ﻿using Colegio.Core.Entities;
 using Colegio.Core.Interfaces;
 using Colegio.Infrastructure.Data;
-using System;
 using System.Threading.Tasks;
 
 namespace Colegio.Infrastructure.Repositories
@@ -10,12 +9,16 @@ namespace Colegio.Infrastructure.Repositories
     {
         private readonly ColegioContext _context;
         private readonly IRepository<Ingreso> _ingresoRepositoty;
+        private readonly ISeguridadRepository _seguridadRepositoty;
 
         public UnitOfWork(ColegioContext context)
         {
             _context = context;
         }
+
         public IRepository<Ingreso> IngresoRepository => _ingresoRepositoty ?? new BaseRepository<Ingreso>(_context);
+
+        public ISeguridadRepository SeguridadRepository => _seguridadRepositoty ?? new SeguridadRepository(_context);
 
         public void Dispose()
         {

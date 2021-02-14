@@ -11,7 +11,7 @@ namespace Colegio.Infrastructure.Repositories
     public class BaseRepository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly ColegioContext _context;
-        private readonly DbSet<T> _entities;
+        public readonly DbSet<T> _entities;
 
         public BaseRepository(ColegioContext context)
         {

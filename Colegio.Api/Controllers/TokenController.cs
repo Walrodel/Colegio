@@ -1,4 +1,5 @@
 ﻿using Colegio.Core.Entities;
+using Colegio.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -17,16 +18,21 @@ namespace Colegio.Api.Controllers
     public class TokenController : Controller
     {
         private readonly IConfiguration _configutarion;
-        public TokenController(IConfiguration configutarion)
+        private readonly ISeguridadService _seguridadService;
+        public TokenController(IConfiguration configutarion, ISeguridadService seguridadService)
         {
             _configutarion = configutarion;
+            _seguridadService = seguridadService;
         }
+
         [HttpPost]
-        public IActionResult IndexAuthentication(UserLogin login)
+        public async Task<IActionResult> IndexAuthentication(UserLogin login)
         {
-            if (IsValidUser(login))
+            var validation = await IsValidUser(login);
+
+            if (validation.Item1)
             {
-                var token = GenerateToken();
+                var token = GenerateToken(validation.Item2);
                 return Ok(new { token });
             }
 
@@ -34,12 +40,13 @@ namespace Colegio.Api.Controllers
 
         }
 
-        private bool IsValidUser(UserLogin login)
+        private async Task<(bool, Seguridad)> IsValidUser(UserLogin login)
         {
-            return true;
+            var user = await _seguridadService.GetLoginbyCredentials(login);
+            return (user != null, user);
         }
 
-        private string GenerateToken()
+        private string GenerateToken(Seguridad seguridad)
         {
             //Header
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configutarion["Authentication:SecretKey"]));
@@ -49,9 +56,9 @@ namespace Colegio.Api.Controllers
             //Claims
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, "Walther Rojas"),
-                new Claim(ClaimTypes.Email, "walrodel@hotmail.com"),
-                new Claim(ClaimTypes.Role, "Administrator"),
+                new Claim(ClaimTypes.Name, seguridad.Usuario),
+                new Claim("Nombre Usuario", seguridad.NombreUsuario),
+                new Claim(ClaimTypes.Role, seguridad.Rol.ToString()),
             };
 
             //Payload
@@ -60,7 +67,7 @@ namespace Colegio.Api.Controllers
                 _configutarion["Authentication:Audience"],
                 claims,
                 DateTime.Now,
-                DateTime.UtcNow.AddMinutes(2)
+                DateTime.UtcNow.AddMinutes(30)
                 );
 
             var token = new JwtSecurityToken(header, payload);

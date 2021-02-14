@@ -1,6 +1,6 @@
 ﻿using Colegio.Core.Entities;
-using Colegio.Infrastructure.Data.Configurations;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -20,10 +20,12 @@ namespace Colegio.Infrastructure.Data
         }
 
         public virtual DbSet<Ingreso> Ingreso { get; set; }
+        public virtual DbSet<Seguridad> Seguridad { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new IngresoConfiguration());
+            //modelBuilder.ApplyConfiguration(new IngresoConfiguration());
+            modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
         }
 
